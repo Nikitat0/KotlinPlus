@@ -2,7 +2,7 @@ package ru.nikitat.kotlinplus
 
 inline operator fun Bool.invoke(block: () -> Unit) = this.apply { if (this) block() }
 inline operator fun Bool.minus(block: () -> Unit) = this.apply { if (!this) block() }
-inline infix fun Bool.orElse(block: () -> Unit) = this.apply { if (!this) block() }
+inline infix fun Bool.ifNot(block: () -> Unit) = this.apply { if (!this) block() }
 
 inline operator fun <reified V> Bool.invoke(v: V, v2: V) = if (this) v else v2
 inline operator fun Bool.invoke(v: Byte, v2: Byte) = if (this) v else v2

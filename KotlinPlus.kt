@@ -13,6 +13,8 @@ inline fun forever(block: () -> Unit): Nothing {
     while (true) block()
 }
 
+inline fun wait(lambda: () -> Bool) = run { while (!lambda()); }
+
 inline operator fun Int.invoke(action: (Int) -> Unit) {
     for (i in 0 until this) action(i)
 }
