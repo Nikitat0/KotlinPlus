@@ -15,13 +15,15 @@ inline fun forever(block: () -> Unit): Nothing {
 
 inline fun wait(lambda: () -> Bool) = run { while (!lambda()); }
 
-inline operator fun Int.invoke(action: (Int) -> Unit) {
+inline infix fun Int.times(action: (Int) -> Unit) {
     for (i in 0 until this) action(i)
 }
 
-inline operator fun Bool.inc() = true
-inline operator fun Bool.dec() = false
-inline fun Bool.toByte() = this(1.toByte(), 0)
-inline fun Bool.toShort() = this(1.toShort(), 0)
-inline fun Bool.toInt() = this(1, 0)
-inline fun Bool.toLong() = this(1L, 0L)
+inline operator fun Bool.dec() = !this
+inline fun Bool.toByte(): Byte = if (this) 1 else 0
+inline fun Bool.toShort(): Short = if (this) 1 else 0
+inline fun Bool.toInt(): Int = if (this) 1 else 0
+inline fun Bool.toLong(): Short = if (this) 1 else 0
+
+inline fun sleep(time: Long) = Thread.sleep(time)
+inline fun sleep(time: Long, nanos: Int) = Thread.sleep(time, nanos)
