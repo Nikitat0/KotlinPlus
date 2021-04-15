@@ -5,7 +5,7 @@ import kotlin.math.pow as kpow
 
 inline infix fun Int.pow(v: Int): Int {
     var r = 1
-    v { r *= this }
+    v times { r *= this }
     return r
 }
 
