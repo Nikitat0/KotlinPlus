@@ -32,6 +32,7 @@ typealias boolList = BooleanArrayList
 typealias ArrayList<V> = ObjectArrayList<V>
 typealias ImmutableList<V> = ObjectImmutableList<V>
 
+inline fun <reified V> list() = ObjectArrayList<V>()
 inline fun <reified V> list(vararg varargs: V) = ObjectArrayList<V>(varargs)
 inline fun <reified V> list(capacity: Int) = ObjectArrayList<V>(capacity)
 inline fun <reified V> list(vararg varargs: V, immutable: Bool) =
