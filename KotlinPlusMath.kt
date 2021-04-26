@@ -23,3 +23,5 @@ val Float.abs
     inline get() = abs(this)
 val Double.abs
     inline get() = abs(this)
+
+fun Int.remap(from1: Int, to1: Int, from2: Int, to2: Int): Int = (this - from1) / (to1 - from1) * (to2 - from2) + from2;
