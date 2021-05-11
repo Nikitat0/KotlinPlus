@@ -9,7 +9,7 @@ inline operator fun Thread.invoke() = this.start()
 inline operator fun Runnable.invoke() = this.run()
 inline operator fun <reified V> Callable<V>.invoke(): V = this.call()
 
-inline fun forever(block: () -> Unit) {
+inline fun forever(block: () -> Unit): Nothing {
     while (true) block()
 }
 
