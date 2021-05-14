@@ -1,6 +1,7 @@
 package ru.nikitat.kotlinplus
 
 import java.util.concurrent.Callable
+import kotlin.annotation.AnnotationTarget.*
 
 typealias Bool = Boolean
 typealias BoolArray = BooleanArray
@@ -29,3 +30,17 @@ inline fun Bool.toLong(): Long = if (this) 1 else 0
 
 inline fun sleep(time: Long) = Thread.sleep(time)
 inline fun sleep(time: Long, nanos: Int) = Thread.sleep(time, nanos)
+
+@Target(
+    CLASS,
+    ANNOTATION_CLASS,
+    PROPERTY,
+    FIELD,
+    CONSTRUCTOR,
+    FUNCTION,
+    PROPERTY_GETTER,
+    PROPERTY_SETTER,
+    FILE,
+)
+@Retention(AnnotationRetention.RUNTIME)
+annotation class ProguardKeep
