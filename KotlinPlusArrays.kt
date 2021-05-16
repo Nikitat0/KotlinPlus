@@ -1,5 +1,78 @@
 package ru.nikitat.kotlinplus
 
+@Suppress("UNCHECKED_CAST")
+inline fun <reified T> Array<out T>.subArray(from: Int = 0, to: Int = -1): Array<out T> {
+    val to = if (to < 0) this.size + to else to
+    val len = to - from
+    val res = arrayOfNulls<Any>(len)
+    System.arraycopy(this, from, res, 0, len)
+    return res as Array<out T>
+}
+
+inline fun ByteArray.subArray(from: Int = 0, to: Int = -1): ByteArray {
+    val to = if (to < 0) this.size + to else to
+    val len = to - from
+    val res: ByteArray = bytes(size = len)
+    System.arraycopy(this, from, res, 0, len)
+    return res
+}
+
+inline fun ShortArray.subArray(from: Int = 0, to: Int = -1): ShortArray {
+    val to = if (to < 0) this.size + to else to
+    val len = to - from
+    val res: ShortArray = shorts(size = len)
+    System.arraycopy(this, from, res, 0, len)
+    return res
+}
+
+inline fun IntArray.subArray(from: Int = 0, to: Int = -1): IntArray {
+    val to = if (to < 0) this.size + to else to
+    val len = to - from
+    val res: IntArray = ints(size = len)
+    System.arraycopy(this, from, res, 0, len)
+    return res
+}
+
+inline fun LongArray.subArray(from: Int = 0, to: Int = -1): LongArray {
+    val to = if (to < 0) this.size + to else to
+    val len = to - from
+    val res: LongArray = longs(size = len)
+    System.arraycopy(this, from, res, 0, len)
+    return res
+}
+
+inline fun FloatArray.subArray(from: Int = 0, to: Int = -1): FloatArray {
+    val to = if (to < 0) this.size + to else to
+    val len = to - from
+    val res: FloatArray = floats(size = len)
+    System.arraycopy(this, from, res, 0, len)
+    return res
+}
+
+inline fun DoubleArray.subArray(from: Int = 0, to: Int = -1): DoubleArray {
+    val to = if (to < 0) this.size + to else to
+    val len = to - from
+    val res: DoubleArray = doubles(size = len)
+    System.arraycopy(this, from, res, 0, len)
+    return res
+}
+
+inline fun CharArray.subArray(from: Int = 0, to: Int = -1): CharArray {
+    val to = if (to < 0) this.size + to else to
+    val len = to - from
+    val res: CharArray = chars(size = len)
+    System.arraycopy(this, from, res, 0, len)
+    return res
+}
+
+inline fun BoolArray.subArray(from: Int = 0, to: Int = -1): BoolArray {
+    val to = if (to < 0) this.size + to else to
+    val len = to - from
+    val res: BoolArray = bools(size = len)
+    System.arraycopy(this, from, res, 0, len)
+    return res
+}
+
 inline fun bytes(vararg varargs: Byte) = varargs
 inline fun bytes(unit: Unit = Unit, size: Int) = ByteArray(size)
 inline fun bytes(size: Int, init: (Int) -> Byte) = ByteArray(size) { init(it) }
