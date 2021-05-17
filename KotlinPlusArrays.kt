@@ -1,6 +1,70 @@
 package ru.nikitat.kotlinplus
 
 @Suppress("UNCHECKED_CAST")
+inline operator fun <reified T> Array<out T>.plus(second: Array<out T>): Array<out T> {
+    val res = arrayOfNulls<Any>(this.size + second.size)
+    System.arraycopy(this, 0, res, 0, this.size)
+    System.arraycopy(second, this.size, res, 0, second.size)
+    return res as Array<out T>
+}
+
+inline operator fun ByteArray.plus(second: ByteArray): ByteArray {
+    val res = bytes(size = this.size + second.size)
+    System.arraycopy(this, 0, res, 0, this.size)
+    System.arraycopy(second, this.size, res, 0, second.size)
+    return res
+}
+
+inline operator fun ShortArray.plus(second: ShortArray): ShortArray {
+    val res = shorts(size = this.size + second.size)
+    System.arraycopy(this, 0, res, 0, this.size)
+    System.arraycopy(second, this.size, res, 0, second.size)
+    return res
+}
+
+inline operator fun IntArray.plus(second: IntArray): IntArray {
+    val res = ints(size = this.size + second.size)
+    System.arraycopy(this, 0, res, 0, this.size)
+    System.arraycopy(second, this.size, res, 0, second.size)
+    return res
+}
+
+inline operator fun LongArray.plus(second: LongArray): LongArray {
+    val res = longs(size = this.size + second.size)
+    System.arraycopy(this, 0, res, 0, this.size)
+    System.arraycopy(second, this.size, res, 0, second.size)
+    return res
+}
+
+inline operator fun FloatArray.plus(second: FloatArray): FloatArray {
+    val res = floats(size = this.size + second.size)
+    System.arraycopy(this, 0, res, 0, this.size)
+    System.arraycopy(second, this.size, res, 0, second.size)
+    return res
+}
+
+inline operator fun DoubleArray.plus(second: DoubleArray): DoubleArray {
+    val res = doubles(size = this.size + second.size)
+    System.arraycopy(this, 0, res, 0, this.size)
+    System.arraycopy(second, this.size, res, 0, second.size)
+    return res
+}
+
+inline operator fun CharArray.plus(second: CharArray): CharArray {
+    val res = chars(size = this.size + second.size)
+    System.arraycopy(this, 0, res, 0, this.size)
+    System.arraycopy(second, this.size, res, 0, second.size)
+    return res
+}
+
+inline operator fun BoolArray.plus(second: BoolArray): BoolArray {
+    val res = bools(size = this.size + second.size)
+    System.arraycopy(this, 0, res, 0, this.size)
+    System.arraycopy(second, this.size, res, 0, second.size)
+    return res
+}
+
+@Suppress("UNCHECKED_CAST")
 inline fun <reified T> Array<out T>.subArray(from: Int = 0, to: Int = -1): Array<out T> {
     val to = if (to < 0) this.size + to else to
     val len = to - from
