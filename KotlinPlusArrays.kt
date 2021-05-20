@@ -1,11 +1,11 @@
 package ru.nikitat.kotlinplus
 
 @Suppress("UNCHECKED_CAST")
-inline operator fun <reified T> Array<out T>.plus(second: Array<out T>): Array<out T> {
+inline operator fun <reified T> Array<T>.plus(second: Array<T>): Array<T> {
     val res = arrayOfNulls<T>(this.size + second.size)
     System.arraycopy(this, 0, res, 0, this.size)
-    System.arraycopy(second, this.size, res, 0, second.size)
-    return res as Array<out T>
+    System.arraycopy(second, 0, res, this.size, second.size)
+    return res as Array<T>
 }
 
 inline operator fun ByteArray.plus(second: ByteArray): ByteArray {
@@ -65,12 +65,12 @@ inline operator fun BoolArray.plus(second: BoolArray): BoolArray {
 }
 
 @Suppress("UNCHECKED_CAST")
-inline fun <reified T> Array<out T>.subArray(from: Int = 0, to: Int = -1): Array<out T> {
+inline fun <reified T> Array<T>.subArray(from: Int = 0, to: Int = -1): Array<T> {
     val to = if (to < 0) this.size + to else to
     val len = to - from
     val res = arrayOfNulls<T>(len)
     System.arraycopy(this, from, res, 0, len)
-    return res as Array<out T>
+    return res as Array<T>
 }
 
 inline fun ByteArray.subArray(from: Int = 0, to: Int = -1): ByteArray {
